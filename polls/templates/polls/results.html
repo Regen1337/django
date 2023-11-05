@@ -1,0 +1,12 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h1> {{ question.question_text }} </h1>
+
+<legend><h2>Choices</h2></legend>
+{% for choice in question.choice_set.all %}
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} -- {{ choice.votes }} votes</label><br />
+{% endfor %}
+
+<a href="{% url 'polls:detail' question.id %}">Back to question?</a><br />
+<a href="{% url 'polls:index' %}">Back to index?</a>
+
